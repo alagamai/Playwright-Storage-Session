@@ -22,19 +22,30 @@ NodeJS: https://nodejs.org/en/download
 
 # how to save session across test 
 1. Initialization Steps in the beforeAll Hook:
+
 	a. The beforeAll hook initializes a browser context and a new page.
+
 	b. It navigates to a login page and executes a login using the utils.login function.
+
 	c. The session storage is saved using await context.storageState({ path: 'storage.json' }).
+
 	d. A global context (webContext) is created by injecting the path to the storage state.
 
+
 2. Page Setup in the beforeEach Hook:
+
 	a. The beforeEach hook opens a new page using the global context (webContext) before each test.
+
 	b. It accesses the page created within the webContext for subsequent test execution.
 
+
+
 3. Login Verification in the First Test (Access Page):
+
 	The first test, named 'access page,' verifies whether the user is logged in by checking the storage session information. This is done by confirming the presence of a welcome message.
 
 4. Additional Tests Using the Second Test (Access Page 1):
+
 	The second test, currently commented out, can be uncommented and utilized for running additional tests or scenarios as needed. Adjust the code within this test for specific test cases or functionalities.
 
 
